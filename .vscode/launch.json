@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "Data Structures and Algorithms_b40b3569"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
