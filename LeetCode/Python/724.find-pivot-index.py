@@ -15,16 +15,15 @@ from typing import List
 
 class Solution:
     def sumList(self, nums: List[int]) -> List[List[int]]:
-        lst = [[], []]
-        leftSum = rightSum = 0
+        lst = []
+        leftSum = 0
         length = len(nums)
         
         for i in range(length):
-            lst[0].append(leftSum)
+            lst.append(leftSum)
             leftSum += nums[i]
-
-            lst[1].append(rightSum)
-            rightSum += nums[length - i - 1]
+            # lst[1].append(rightSum)
+            # rightSum += nums[length - i - 1]
         
         return lst
 
@@ -45,7 +44,7 @@ class Solution:
             leftSum = 0
             rightSum = nums[rightIndex]
             rightIndex -= 1
-        
+        [1,2,3]
 
         while leftIndex <= rightIndex:
             if leftSum > rightSum:
