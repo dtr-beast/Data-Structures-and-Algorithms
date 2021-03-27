@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch MyLinkedList",
+            "request": "launch",
+            "mainClass": "MyLinkedList",
+            "projectName": "Data Structures and Algorithms_b40b3569"
+        },
+        {
+            "type": "java",
+            "name": "Launch StackExample",
+            "request": "launch",
+            "mainClass": "StackExample",
+            "projectName": "Data Structures and Algorithms_b40b3569"
+        },
+        {
+            "type": "java",
+            "name": "Launch TumhaariMaaKaBhosda",
+            "request": "launch",
+            "mainClass": "TumhaariMaaKaBhosda",
+            "projectName": "Data Structures and Algorithms_b40b3569"
+        },
+        {
+            "type": "java",
+            "name": "Launch TumhaariMaaKiChoot",
+            "request": "launch",
+            "mainClass": "TumhaariMaaKiChoot",
+            "projectName": "Data Structures and Algorithms_b40b3569"
+        },
+        {
+            "type": "java",
             "name": "Launch test",
             "request": "launch",
             "mainClass": "test",
