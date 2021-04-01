@@ -15,22 +15,48 @@ class Node:
         self.child = child
 """
 
-
 class Solution:
-    def flatten(self, head: 'Node') -> 'Node':
-        dummy = tempHead = head
-        while tempHead.next:
-            if tempHead.child:
-                childNodeFoot = self.flatten(tempHead.child)
-                childNodeFoot.next = tempHead.next
-                tempHead.next = tempHead.child
-                tempHead.child = None
+    def return_end(self, head: 'Node') -> 'Node':
+        if head is None:
+            return None
 
-            tempHead = tempHead.next
+        while head.next:
+            if head.child:
+                child_foot = self.return_end(head.child)
+                child_foot.next = head.next
+                head.next.prev = child_foot
+                head.next = head.child
+                head.child = None
+                
+            head = head.next
         
-        return tempHead
+        return head
+
+    def flatten(self, head: 'Node') -> 'Node':
+        if head is None:
+            return None
+        
+        dummy = temp_head = head
+        # if temp_head.child:
+        #     return temp_head + self.flatten(temp_head.child)
+        
+        # if temp_head.next:
+        #     return self.flatten(temp_head.next)
+        
+
+        while temp_head.next:
+            if temp_head.child:
+                # return self.flatten(temp_head.child)
+                child_node_foot = self.flatten(temp_head.child)
+                child_node_foot.next = temp_head.next
+                temp_head.next = temp_head.child
+                temp_head.child = None
+
+            temp_head = temp_head.next
+        
+        return temp_head
     
-    def printList(self, foot):
+    def print_list(self, foot):
         while foot:
             print(foot.val)
             foot = foot.prev
