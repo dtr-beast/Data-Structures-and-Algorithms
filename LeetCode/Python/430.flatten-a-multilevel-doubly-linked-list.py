@@ -3,12 +3,13 @@
 #
 # [430] Flatten a Multilevel Doubly Linked List
 #
-# TODO
+# TODO: Convert to Java
 # @lc code=start
-"""
+
 # Definition for a Node.
+"""
 class Node:
-    def __init__(self, val, prev, next, child):
+    def __init__(self, val, prev = None, next = None, child = None):
         self.val = val
         self.prev = prev
         self.next = next
@@ -16,49 +17,84 @@ class Node:
 """
 
 class Solution:
-    def return_end(self, head: 'Node') -> 'Node':
+    def helper_flatten(self, head: 'Node') -> 'Node':
         if head is None:
             return None
-
-        while head.next:
-            if head.child:
-                child_foot = self.return_end(head.child)
-                child_foot.next = head.next
-                head.next.prev = child_foot
-                head.next = head.child
-                head.child = None
-                
-            head = head.next
         
-        return head
+        while head:
+            # First, check if there is a child
+            if head.child:
+                # This will return the last node of the child list (recursively)
+                last = self.helper_flatten(head.child)
+
+                # Temporarily store the next node 
+                next = head.next
+                    
+                # Replace the next node with the child node
+                head.next = head.child
+                head.child.prev = head
+
+                # connect the last flattened node with previously called 'next' node
+                last.next = next
+                
+                if next:
+                    next.prev = last
+                
+                # Remove the child
+                head.child = None
+
+                # Since a child was encountered and has now been flattened,
+                # we can move right onto the last node
+                head = last
+
+            elif head.next:
+                head = head.next
+            else:
+                return head
+    
 
     def flatten(self, head: 'Node') -> 'Node':
-        if head is None:
-            return None
-        
-        dummy = temp_head = head
-        # if temp_head.child:
-        #     return temp_head + self.flatten(temp_head.child)
-        
-        # if temp_head.next:
-        #     return self.flatten(temp_head.next)
-        
-
-        while temp_head.next:
-            if temp_head.child:
-                # return self.flatten(temp_head.child)
-                child_node_foot = self.flatten(temp_head.child)
-                child_node_foot.next = temp_head.next
-                temp_head.next = temp_head.child
-                temp_head.child = None
-
-            temp_head = temp_head.next
-        
-        return temp_head
-    
-    def print_list(self, foot):
-        while foot:
-            print(foot.val)
-            foot = foot.prev
-
+        self.helper_flatten(head)
+        return head
 # @lc code=end
+   
+    def print_list(self, head: 'Node'):
+        while head:
+            print(head.val)
+            head = head.next
+
+# DEBUGGING CODE
+
+# def main():
+#     _1 = Node(1)
+#     _2 = Node(2)
+#     _3 = Node(3)
+#     _4 = Node(4)
+#     _5 = Node(5)
+#     _6 = Node(6)
+#     _7 = Node(7)
+#     _8 = Node(8)
+#     _9 = Node(9)
+#     _10 = Node(10)
+#     _11 = Node(11)
+#     _12 = Node(12)
+
+#     _1.next = _2; _2.prev = _1
+#     _2.next = _3; _3.prev = _2
+#     _3.next = _4; _4.prev = _3; _3.child = _7
+#     _4.next = _5; _5.prev = _4
+#     _5.next = _6; _6.prev = _5
+    
+#     _7.next = _8; _8.prev = _7
+#     _8.next = _9; _9.prev = _8; _8.child = _11
+#     _9.next = _10; _10.prev = _9
+
+#     _11.next = _12; _12.prev = _11
+#     Solution().flatten(_1)
+
+#     Solution().print_list(_1)
+#     # for i in range(1, 13):
+#         # print(f'_{i} = Node({i})')
+
+
+# main()
