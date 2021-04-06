@@ -16,12 +16,12 @@ from typing import List
 class Solution:
     def sumList(self, nums: List[int]) -> List[List[int]]:
         lst = []
-        leftSum = 0
+        left_sum = 0
         length = len(nums)
         
         for i in range(length):
-            lst.append(leftSum)
-            leftSum += nums[i]
+            lst.append(left_sum)
+            left_sum += nums[i]
             # lst[1].append(rightSum)
             # rightSum += nums[length - i - 1]
         
@@ -31,31 +31,30 @@ class Solution:
         if not nums:
             return -1
         
-        leftSum = rightSum = 0
+        left_sum = right_sum = 0
         length = len(nums)
-        leftIndex, rightIndex = 0, length - 1
+        left_index, right_index = 0, length - 1
 
 
-        if nums[leftIndex] < nums[rightIndex]:
-            leftSum = nums[leftIndex]
-            leftIndex += 1
-            rightSum = 0
+        if nums[left_index] < nums[right_index]:
+            left_sum = nums[left_index]
+            left_index += 1
+            right_sum = 0
         else:
-            leftSum = 0
-            rightSum = nums[rightIndex]
-            rightIndex -= 1
-        [1,2,3]
+            left_sum = 0
+            right_sum = nums[right_index]
+            right_index -= 1
 
-        while leftIndex <= rightIndex:
-            if leftSum > rightSum:
-                rightSum += nums[rightIndex]
-                rightIndex -= 1
-            elif rightSum > leftSum:
-                leftSum += nums[leftIndex]
-                leftIndex += 1
-            elif leftIndex + (length - rightIndex) == length:
-                print(leftIndex)
-                return leftIndex
+        while left_index <= right_index:
+            if left_sum > right_sum:
+                right_sum += nums[right_index]
+                right_index -= 1
+            elif right_sum > left_sum:
+                left_sum += nums[left_index]
+                left_index += 1
+            elif left_index + (length - right_index) == length:
+                print(left_index)
+                return left_index
                  
 
         # leftList, rightList = self.sumList(nums)

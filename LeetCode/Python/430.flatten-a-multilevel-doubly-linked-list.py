@@ -34,7 +34,7 @@ class Solution:
                 head.next = head.child
                 head.child.prev = head
 
-                # connect the last flattened node with previously called 'next' node
+                # Connect the last flattened node with previously called 'next' node
                 last.next = next
                 
                 if next:
