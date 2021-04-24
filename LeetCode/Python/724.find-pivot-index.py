@@ -12,7 +12,7 @@ from typing import *
 # @lc code=start
 from typing import List
 
-
+# TODO: Solve
 class Solution:
     def sumList(self, nums: List[int]) -> List[List[int]]:
         lst = []
