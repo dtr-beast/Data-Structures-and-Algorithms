@@ -18,6 +18,7 @@ from typing import *
 #         self.right = right
 
 
+
 class Solution:
     def checkSymmetry(self, leftHead: TreeNode, rightHead: TreeNode) -> bool:
         if leftHead is None and rightHead is None:
