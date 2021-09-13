@@ -1,3 +1,10 @@
+// @before-stub-for-debug-begin
+#include <vector>
+#include <string>
+
+using namespace std;
+// @before-stub-for-debug-end
+
 /*
  * @lc app=leetcode id=26 lang=cpp
  *
@@ -14,7 +21,7 @@ public:
         {
             return 0;
         }
-        
+
         int i = 0;
         for (int j = 1; j < nums.size(); j++)
         {

@@ -3,9 +3,8 @@
 #
 # [1] Two Sum
 #
-
+# Better C++ and Rust Solution
 # @lc code=start
-# TODO: Improve
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         listLen = len(nums)
