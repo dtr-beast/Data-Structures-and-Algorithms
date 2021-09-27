@@ -2,6 +2,7 @@
     "python.pythonPath": "C:\\Users\\mc5to\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
     "files.associations": {
         "iostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "string": "cpp"
     }
 }
