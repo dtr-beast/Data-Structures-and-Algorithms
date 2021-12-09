@@ -1,0 +1,1 @@
+## In case of EPERM errors with Leetcode extensions, try changing the workspace folder destination

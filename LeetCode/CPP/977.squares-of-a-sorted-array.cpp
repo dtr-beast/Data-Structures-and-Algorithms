@@ -1,44 +1,36 @@
+#include <vector>
+#include <iostream>
+using namespace std;
 /*
  * @lc app=leetcode id=977 lang=cpp
  *
  * [977] Squares of a Sorted Array
  */
-// TODO: Learn about monotonic stack
+
 // @lc code=start
 class Solution
 {
 public:
     vector<int> sortedSquares(vector<int> &nums)
     {
-        int len = nums.size();
-        vector<int> v(len);
-
-        int n;
-        stack<int> sol, temp;
-
-        for (int i = 0; i < len; i++)
+        vector<int> arr(nums.size());
+        // Take two pointers
+        int i = 0, j = nums.size() - 1;
+        for (int c = arr.size() - 1; c >= 0; c--)
         {
-            n = nums[i] * nums[i];
-            while ((!temp.empty()) && (temp.top() < n))
+            // Fill the new array depending on the bigger absolute value
+            if (abs(nums[i]) > abs(nums[j]))
             {
-                sol.push(temp.top());
-                temp.pop();
+                arr[c] = nums[i] * nums[i];
+                i++;
             }
-            temp.push(n);
+            else
+            {
+                arr[c] = nums[j] * nums[j];
+                j--;
+            }
         }
-        while (!temp.empty())
-        {
-            sol.push(temp.top());
-            temp.pop();
-        }
-
-        for (int i = v.size() - 1; i >= 0; i--)
-        {
-            v[i] = sol.top();
-            sol.pop();
-        }
-
-        return v;
+        return arr;
     }
 };
 // @lc code=end

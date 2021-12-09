@@ -1,9 +1,10 @@
 {
-    "python.pythonPath": "C:\\Users\\mc5to\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "python.pythonPath": "C:\\Development_Kits\\Python_3.10\\python.exe",
     "files.associations": {
         "iostream": "cpp",
         "vector": "cpp",
         "string": "cpp",
         "utility": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }
