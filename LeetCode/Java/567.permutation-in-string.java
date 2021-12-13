@@ -38,7 +38,7 @@ class Solution {
             if (exist.getOrDefault(s2.charAt(i - k), false)) {
                 arr[s2.charAt(i - k) - 'a']++;
             }
-            if (exist.getOrDefault(s2.charAt(i), fa)) {
+            if (exist.getOrDefault(s2.charAt(i), false)) {
                 arr[s2.charAt(i) - 'a']--;
             }
         }
