@@ -1,47 +1,33 @@
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 class Solution {
-    private boolean checkArray(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean checkInclusion(String s1, String s2) {
-        if (s1.length() > s2.length()) {
-            return false;
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        
+        if (root == null) {
+            return list;
         }
 
-        int[] arr = new int[26];
-        HashMap<Character, Boolean> exist = new HashMap<>();
-
-        for (int i = 0; i < s1.length(); i++) {
-            arr[s1.charAt(i) - 'a']++;
-            exist.put(s1.charAt(i), true);
+        q.offer(root);
+        while (!q.isEmpty()) {
+            List<Integer> tempList = new ArrayList<>();
+            int i = q.size();
+            while (i-- != 0) {
+                TreeNode curr = q.poll();
+                // if (curr.left != null) {
+                    q.offer(curr.left);
+                // }
+                // if (curr.right != null) {
+                    q.offer(curr.right);
+                // }
+                tempList.add(curr.val);
+            }
+            list.add(tempList);
         }
-
-        int i = 0;
-        int k = s1.length();
-        for (; i < k; i++) {
-            if (exist.getOrDefault(s2.charAt(i), false)) {
-                arr[s2.charAt(i) - 'a']--;
-            }
-        }
-
-        for (; i < s2.length(); i++) {
-            if (checkArray(arr)) {
-                return true;
-            }
-            if (exist.getOrDefault(s2.charAt(i - k), false)) {
-                arr[s2.charAt(i - k) - 'a']++;
-            }
-            if (exist.getOrDefault(s2.charAt(i), false)) {
-                arr[s2.charAt(i) - 'a']--;
-            }
-        }
-        return checkArray(arr);
+        return list;
     }
 }

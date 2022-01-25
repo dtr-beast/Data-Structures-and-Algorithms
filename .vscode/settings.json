@@ -7,5 +7,11 @@
         "utility": "cpp",
         "new": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Enabled"
+    "C_Cpp.errorSquiggles": "Enabled",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "C:\\DEV_SDK\\Java\\jdk-17.0.1\\bin",
+        }
+    ]
 }
