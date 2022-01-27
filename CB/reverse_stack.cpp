@@ -1,31 +1,34 @@
 #include <bits/stdc++.h>
-#include <iostream>
-#include <stack>
 using namespace std;
-
-void rStack(stack<int> &s)
-{
-    if (s.empty())
-    {
-        return;
-    }
-    int c = s.top();
-    s.pop();
-    rStack(s);
-    cout << c << "\n";
-}
-
 int main()
 {
     int n;
     cin >> n;
-    stack<int> s;
-    while (n--)
+    vector<int> cost(n);
+    for (int i = 0; i < n; i++)
     {
-        int x;
-        cin >> x;
-        s.push(x);
+        cin >> cost[i];
     }
-    rStack(s);
+    if (cost.size() == 2)
+    {
+        cout << min(cost[0], cost[1]);
+        return 0;
+    }
+    vector<int> dp(cost.size(), 0);
+    dp[0] = cost[0];
+    dp[1] = cost[1];
+    int i;
+    for (i = 2; i < cost.size() - 1; i++)
+    {
+        dp[i] = min(dp[i - 1] + cost[i], dp[i - 2] + cost[i]);
+    }
+
+    dp[i] = min(dp[i - 2] + cost[i], dp[i - 1]);
+
+    // for (int i: dp) {
+    //     cout << i << " ";
+    // }
+    // cout << endl;
+    cout << dp[i];
     return 0;
 }
