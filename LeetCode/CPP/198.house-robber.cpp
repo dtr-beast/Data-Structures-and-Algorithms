@@ -12,7 +12,16 @@ class Solution
 public:
     int rob(vector<int> &nums)
     {
-        
+        int len = nums.size();
+        int secondLast = 0, last = nums[0], ans = nums[0];
+
+        for (int i = 2; i <= len; i++)
+        {
+            ans = max(last, secondLast + nums[i - 1]);
+            secondLast = last;
+            last = ans;
+        }
+        return ans;
     }
 };
 // @lc code=end

@@ -9,28 +9,32 @@ using namespace std;
 class Solution
 {
 public:
-    vector<vector<int>> merge(vector<vector<int>> &intervals)
+    vector<vector<int>> merge(vector<vector<int>> &ins)
     {
+
         vector<vector<int>> ans;
-        pair<int, int> interval;
+        sort(ins.begin(), ins.end(), [](vector<int> &a, vector<int> &b)
+             { return a[0] < b[0]; });
 
-        for (int i = 0; i < intervals.size(); i++)
+        int cstart = ins[0][0];
+        int cend = ins[0][1];
+        for (int i = 0; i < ins.size() - 1;)
         {
-            vector<int> lans;
-
-            int cstart = intervals[i][0];
-            int cend = intervals[i][1];
-
-            for (int j = i + 1; j < intervals.size(); j++)
+            if (cend >= ins[i + 1][0])
             {
-                if (cend > intervals[j][0])
-                {
-                    cend = max(cend, intervals[j][1]);
-                }
+                cend = max(cend, ins[i + 1][1]);
+                i++;
             }
-            ans.push_back({cstart, cend});
+            else
+            {
+                ans.push_back({cstart, cend});
+                cstart = ins[i + 1][0];
+                cend = ins[i + 1][1];
+                i++;
+            }
         }
         return ans;
     }
 };
+
 // @lc code=end

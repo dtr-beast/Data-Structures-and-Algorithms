@@ -210,7 +210,7 @@ public class Main{
 	}
 	}
 public static void main(String[] args) throws Exception {
-		
+		HashMap <Integer, Integer> m = new HashMap<>();
 		Scanner scn = new Scanner(System.in);
 		LinkedList list = new LinkedList();
         scn.close();
