@@ -6,38 +6,46 @@
 #include <bits/stdc++.h>
 using namespace std;
 // @lc code=start
+// TODO: Improve
 class Solution
 {
 public:
     vector<vector<int>> threeSum(vector<int> &nums)
     {
+        sort(nums.begin(), nums.end());
         int len = nums.size();
-        set<multiset<int>> s;
+        vector<vector<int>> ans;
 
         for (int i = 0; i < len; i++)
         {
-            map<int, int> m;
-            for (int j = i + 1; j < len; j++)
-            {
-                int findNum = 0 - (nums[i] + nums[j]);
-                if (m.count(findNum))
-                {
-                    if (m[findNum] == i || m[findNum] == j)
-                        continue;
+            if (nums[i] > 0)
+                break;
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
 
-                    multiset<int> ans = {nums[i], nums[j], findNum};
-
-                    s.insert(ans);
-                }
-                m[nums[j]] = j;
-            }
+            twoSum(nums, i, ans);
         }
-        vector<vector<int>> arr;
+        return ans;
+    }
+
+    void twoSum(vector<int> &nums, int i, vector<vector<int>> &ans)
+    {
+        set<multiset<int>> s;
+        map<int, int> m;
+        for (int j = i + 1; j < nums.size(); j++)
+        {
+            int findNum = 0 - (nums[i] + nums[j]);
+            if (m.count(findNum))
+            {
+                multiset<int> ans = {nums[i], nums[j], findNum};
+                s.insert(ans);
+            }
+            m[nums[j]] = j;
+        }
         for (auto ms : s)
         {
-            arr.push_back(vector<int>(ms.begin(), ms.end()));
+            ans.push_back(vector<int>(ms.begin(), ms.end()));
         }
-        return arr;
     }
 };
 // @lc code=end

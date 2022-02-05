@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Development_Kits\\Python_3.10\\python.exe",
+    "python.pythonPath": "C:\\DEV_SDK\\Python\\Python310\\python.exe",
     "files.associations": {
         "iostream": "cpp",
         "vector": "cpp",
