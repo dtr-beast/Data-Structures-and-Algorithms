@@ -69,5 +69,6 @@
             "name": "JavaSE-17",
             "path": "C:\\DEV_SDK\\Java\\jdk-17.0.1\\bin",
         }
-    ]
+    ],
+    "C_Cpp.intelliSenseEngineFallback": "Disabled"
 }
