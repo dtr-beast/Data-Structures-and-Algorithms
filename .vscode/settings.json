@@ -61,7 +61,8 @@
         "tuple": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "regex": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "java.configuration.runtimes": [
