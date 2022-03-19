@@ -7,7 +7,7 @@
 using namespace std;
 
 // @lc code=start
-
+// Create a map with default value as -1 in C++
 struct defaultMinusOne
 {
     int val = -1;
