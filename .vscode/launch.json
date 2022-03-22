@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Data-Structures-and-Algorithms_a9050727"
+        },
+        {
+            "type": "java",
             "name": "Launch Main$LinkedList",
             "request": "launch",
             "mainClass": "Main$LinkedList",
