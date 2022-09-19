@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+using namespace std;
+
 struct ListNode
 {
     int val;
@@ -7,4 +9,3 @@ struct ListNode
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-using namespace std;
