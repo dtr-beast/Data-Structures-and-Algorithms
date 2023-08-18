@@ -1,0 +1,51 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/cpp
+{
+	"name": "LeetCode DSA",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools-extension-pack",
+				"ms-vscode.cpptools",
+				"aaron-bond.better-comments",
+				"alefragnani.Bookmarks",
+				"usernamehw.errorlens",
+				"ms-python.black-formatter",
+				"formulahendry.code-runner",
+				"streetsidesoftware.code-spell-checker",
+				"wangtao0101.debug-leetcode",
+				"vscjava.vscode-java-pack",
+				"eamodio.gitlens",
+				"LeetCode.vscode-leetcode",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"mutantdino.resourcemonitor",
+				"rust-lang.rust-analyzer",
+				"Gruntfuggly.todo-tree"
+			]
+		}
+	},
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {}
+	},
+	"forwardPorts": [
+		6080
+	],
+	"portsAttributes": {
+		"6080": {
+			"label": "Desktop"
+		}
+	}
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "gcc -v",
+	// Configure tool-specific properties.
+	// "customizations": {},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
