@@ -1,7 +1,9 @@
-# @before-stub-for-debug-begin
-from python3problem206 import *
-from typing import *
-# @before-stub-for-debug-end
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 
 #
 # @lc app=leetcode id=206 lang=python3
@@ -10,42 +12,44 @@ from typing import *
 #
 
 # @lc code=start
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 
-# TODO: Improve
+
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        if head == None:
+        if head is None:
             return None
 
-        nodes = []
-        tempHead = head
-        while tempHead:
-            nodes.append(tempHead)
-            tempHead = tempHead.next
+        next = None
+        prev = None
 
-        nodes.reverse()
+        while head:
+            next = head.next
+            head.next = prev
+            prev = head
+            head = next
 
-        for i in range(len(nodes) - 1):
-            nodes[i].next = nodes[i + 1]
+        return prev
 
-        nodes[-1].next = None 
-        
-        return nodes[0]
-         
-           
-        # tempHead = head
-        # while tempHead.next:
-        #     # tempHead.next = tempHead.next.next
-        #     head = tempHead.next
-        #     tempHead.next = head.next
-        #     head.next = tempHead
-        #     # head.next = tempHead.next
-        #     # tempHead.next = 
+    def reverseListRecursive(self, head: ListNode) -> ListNode:
+        if head is None:
+            return None
+
+        newHead = head
+        if head.next:
+            newHead = self.reverseListRecursive(head.next)
+            head.next.next = head
+
+        head.next = None
+
+        return newHead
+
 
 # @lc code=end
 
+
+"""
+1 -> 2 -> 3 -> 4 -> 5
+All that needs to be done is reverse the arrows, not the actual values
+
+1 <- 2 <- 3 <- 4 -> 5
+"""
