@@ -3,30 +3,31 @@
 #
 # [141] Linked List Cycle
 #
+from typing import Optional
 
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 # @lc code=start
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
+
 class Solution:
-    def hasCycle(self, head: ListNode) -> bool:
-        if head is None or head.next is None:
-            return False
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        slow = fast = head
 
-        slowHead = head
-        fastHead = head.next
+        while fast and fast.next:
+            if fast is slow:
+                return True
+            
+            slow = slow.next
+            fast = fast.next.next
 
-        try:
-            while slowHead and fastHead:
-                if slowHead == fastHead:
-                    return True
-
-                slowHead = slowHead.next
-                fastHead = fastHead.next.next
-        except AttributeError:
-            return False
-
-
+        return False
 # @lc code=end
+
