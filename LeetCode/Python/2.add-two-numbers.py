@@ -1,12 +1,16 @@
-# @before-stub-for-debug-begin
-from python3problem2 import *
-from typing import *
-# @before-stub-for-debug-end
 #
 # @lc app=leetcode id=2 lang=python3
 #
 # [2] Add Two Numbers
 #
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 
 # @lc code=start
 # Definition for singly-linked list.
@@ -14,25 +18,29 @@ from typing import *
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-# TODO: Improve
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        s1 = s2 =  ''
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
+        newNode = temp = ListNode()
 
-        while l1:
-            s1 = str(l1.val) + s1
-            l1 = l1.next
-        
-        while l2:
-            s2 = str(l2.val) + s2
-            l2 = l2.next
+        carryOver = 0
+        while l1 or l2:
+            l1Val = l1.val if l1 else 0
+            l2Val = l2.val if l2 else 0
 
-        s3 = str(int(s1) + int(s2))
-        head = lst = ListNode(0)
-        
-        for i in s3[::-1]:
-            lst.next = ListNode(int(i))
-            lst = lst.next
+            value = l1Val + l2Val + carryOver
+            carryOver = value // 10
+            temp.next = ListNode(value % 10)
 
-        return head.next
+            temp = temp.next
+            l1 = l1.next if l1 else l1
+            l2 = l2.next if l2 else l2
+
+        if carryOver > 0:
+            temp.next = ListNode(carryOver)
+
+        return newNode.next
+
+
 # @lc code=end
